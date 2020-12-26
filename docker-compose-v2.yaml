@@ -1,0 +1,49 @@
+version: "2"
+services:
+    product:
+        image: product-service:1.0
+        command: ["node","index.js"]
+        container_name: "product_service"
+        environment: &myservice_environment
+            REDIS_HOST: 172.55.0.8
+            REDIS_PORT: 6379
+            SERVICE_NAME: "Product"
+        ports:
+            - "4001:80"
+        networks:
+            - my-net-v2
+        depends_on:
+            - redis-services
+    order:
+        image: order-service:1.0
+        command: ["node","index.js"]
+        container_name: "order-service"
+        environment:
+            <<: *myservice_environment
+            SERVICE_NAME: "Order"
+        ports:
+            - "5001:80"
+        networks:
+            - my-net-v2
+        depends_on:
+            - redis-services
+    redis-services:
+        container_name: redis
+        image: redis:latest
+        ports:
+            - "6372:6379"
+        volumes:
+            - redis-app-vol-v2:/data
+        networks:
+            my-net-v2:
+                ipv4_address: 172.55.0.8
+volumes:
+    redis-app-vol-v2:
+      external: true
+networks:
+    my-net-v2:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.55.0.0/16
+                  gateway: 172.55.0.1
