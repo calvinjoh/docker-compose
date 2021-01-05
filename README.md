@@ -1,4 +1,13 @@
 ## Command Docker Compose
+**Cara Install Docker Compose**
+```sh
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
+```
+[Tutorial Lengkapnya](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04)
+
+
 **Untuk create container/network/volume di file docker compose:**
 ```sh
 $ docker-compose -f docker-compose-v3.yaml -p my-app-v3 up --scale order=5 -d --build
@@ -38,3 +47,8 @@ $ docker compose scale order=7
 ```sh
 $ docker-compose -f docker-compose-v3.yaml -p my-app-v3 down
 ```
+
+**Dokumentasi Config File Docker Compose**
+* [Versi Docker Compose](https://docs.docker.com/compose/compose-file/)
+* [Docker Compose File v3](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+* [Docker Compose File v2](https://docs.docker.com/compose/compose-file/compose-file-v2/)
