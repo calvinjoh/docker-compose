@@ -40,7 +40,7 @@ Value:
 
 **Untuk Scale Container Yang Sudah UP:**
 ```sh
-$ docker compose scale order=7
+$ docker-compose -f docker-compose-v3.yaml -p my-app-v3 scale order=7
 ```
 
 **Untuk remove/down container/network/volume di file docker compose:**

@@ -12,6 +12,7 @@ services:
             - "4001:80"
         networks:
             - my-net-v2
+            # - test
         depends_on:
             - redis-services
     order:
@@ -47,3 +48,9 @@ networks:
             config:
                 - subnet: 172.55.0.0/16
                   gateway: 172.55.0.1
+    # test:
+    #     driver: bridge
+    #     ipam:
+    #         config:
+    #             - subnet: 172.77.0.0/16
+    #               gateway: 172.77.0.1
