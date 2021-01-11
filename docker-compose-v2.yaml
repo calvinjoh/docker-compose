@@ -13,6 +13,7 @@ services:
         networks:
             - my-net-v2
             # - test
+            # - test-external
         depends_on:
             - redis-services
     order:
@@ -54,3 +55,6 @@ networks:
     #         config:
     #             - subnet: 172.77.0.0/16
     #               gateway: 172.77.0.1
+    # test-external:
+    #     external:
+    #         name: "my-net-external"
